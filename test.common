@@ -47,11 +47,13 @@ default_nodes=3
 default_subnets=""
 default_master_node=1
 default_pmc_node=0
+default_snmpd_node=0
 default_nsm_node=0
 default_master_start=0.0
 default_slave_start=9.0
 default_pmc_start=50.0
 default_nsm_start=50.0
+default_snmpd_start=50.0
 default_master_step=""
 default_slave_step=""
 default_update_interval=0
@@ -60,6 +62,7 @@ default_master_conf=""
 default_slave_conf=""
 default_pmc_conf=""
 default_nsm_conf=""
+default_snmpd_conf=""
 default_extra_ptp4l_options=""
 
 for defopt in $(declare | grep '^default_'); do

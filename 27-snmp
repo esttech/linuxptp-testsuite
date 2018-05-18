@@ -1,0 +1,20 @@
+#!/bin/bash
+
+. test.common
+
+test_start "testing telecom_dscmp"
+nodes=2
+snmpd_node=2
+snmp_conf="logSyncInterval -4"
+
+generate_config4 "1" "1 2 3" 0.01 "(sum (* 1e-9 (normal)))" "(* 1e-8 (exponential))"
+
+# Using telecom_dscmp with default priorities
+start_client 1 ptp4l "$node1_conf" "" "-i eth0" && test_ok || test_error
+start_client 2 snmpd "$snmp_conf" "" "-i eth0" && test_ok || test_error
+start_server $nodes -l 110
+
+test_pass
+
+
+
